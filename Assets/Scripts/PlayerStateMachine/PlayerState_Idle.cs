@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerState_Idle : State<PlayerStateMachine.PlayerState>
 {
+    PlayerStateMachine.PlayerState nextState = PlayerStateMachine.PlayerState.Idle;
+
     public PlayerState_Idle(PlayerStateMachine.PlayerState key) : base(key)
     {
         key = PlayerStateMachine.PlayerState.Idle;
@@ -11,36 +13,39 @@ public class PlayerState_Idle : State<PlayerStateMachine.PlayerState>
 
     public override void EnterState()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Enter Idle State");
     }
     public override void UpdateState()
     {
-        throw new System.NotImplementedException();
+        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+        {
+            nextState = PlayerStateMachine.PlayerState.Move;
+        }
     }
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override PlayerStateMachine.PlayerState GetNextState()
     {
-        throw new System.NotImplementedException();
+        return nextState;
     }
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void OnTriggerExit2D(Collider2D collision)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void OnTriggerStay2D(Collider2D collision)
     {
-        throw new System.NotImplementedException();
+        
     }
 
 }

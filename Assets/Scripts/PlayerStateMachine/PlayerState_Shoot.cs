@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerState_Shoot : State<PlayerStateMachine.PlayerState>
 {
+    PlayerStateMachine.PlayerState nextState = PlayerStateMachine.PlayerState.Shoot;
+
     public PlayerState_Shoot(PlayerStateMachine.PlayerState key) : base(key)
     {
         key = PlayerStateMachine.PlayerState.Shoot;
@@ -11,36 +14,36 @@ public class PlayerState_Shoot : State<PlayerStateMachine.PlayerState>
 
     public override void EnterState()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Enter Shoot State");
     }
     public override void UpdateState()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override PlayerStateMachine.PlayerState GetNextState()
     {
-        throw new System.NotImplementedException();
+        return nextState;
     }
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void OnTriggerExit2D(Collider2D collision)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void OnTriggerStay2D(Collider2D collision)
     {
-        throw new System.NotImplementedException();
+        
     }
 
 }
