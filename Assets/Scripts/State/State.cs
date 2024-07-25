@@ -1,7 +1,19 @@
-public abstract class State 
-{
-    abstract public void EnterState();
+using UnityEngine;
+using System;
+using Unity.VisualScripting;
 
-    abstract public void ExitState();
-    abstract public void UpdateState(); 
+public abstract class State<EState> where EState : Enum
+{
+    public EState StateKey { get; private set; }
+    public State(EState key)
+    {
+        StateKey = key;
+    }
+    public abstract void EnterState();
+    public abstract void ExitState();
+    public abstract void UpdateState();
+    public abstract EState GetNextState();
+    public abstract void OnTriggerEnter2D(Collider2D collision);
+    public abstract void OnTriggerStay2D(Collider2D collision); 
+    public abstract void OnTriggerExit2D(Collider2D collision);
 }
