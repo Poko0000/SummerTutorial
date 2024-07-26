@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody rigidbody;
+    Rigidbody2D rigidbody;
     float speed = 5;
+
     private void Awake()
     {             
-        rigidbody = GetComponent<Rigidbody>();
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     public void Move()
     {
-        if(Input.GetKeyDown(KeyCode.W))
-        {
-            SetVelocityX(speed);
-        }
+        float horizontalInput = Input.GetAxis("Horizontal");
+        SetVelocityX(horizontalInput * speed);
+        float verticalInput = Input.GetAxis("Vertical");
+        SetVelocityY(verticalInput * speed);
+
     }
 
     public void SetVelocity(Vector3 velocity)

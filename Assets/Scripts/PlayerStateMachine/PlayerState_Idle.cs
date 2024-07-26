@@ -4,23 +4,30 @@ using UnityEngine;
 
 public class PlayerState_Idle : State<PlayerStateMachine.PlayerState>
 {
-    PlayerStateMachine.PlayerState nextState = PlayerStateMachine.PlayerState.Idle;
+    PlayerStateMachine.PlayerState nextState;
 
     public PlayerState_Idle(PlayerStateMachine.PlayerState key) : base(key)
     {
         key = PlayerStateMachine.PlayerState.Idle;
+        nextState = key;
     }
 
     public override void EnterState()
     {
         Debug.Log("Enter Idle State");
+        nextState = PlayerStateMachine.PlayerState.Idle;
     }
     public override void UpdateState()
     {
-        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+        if (Input.GetAxis("Horizontal") != 0 && Input.GetAxis("Vertical") != 0)
         {
             nextState = PlayerStateMachine.PlayerState.Move;
         }
+        else if (Input.GetMouseButtonDown(0))
+        {
+            nextState = PlayerStateMachine.PlayerState.Shoot;
+        }
+        
     }
 
     public override void ExitState()
