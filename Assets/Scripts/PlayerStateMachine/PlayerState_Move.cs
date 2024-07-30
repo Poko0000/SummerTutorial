@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerState_Move : State<PlayerStateMachine.PlayerState>
@@ -19,7 +17,7 @@ public class PlayerState_Move : State<PlayerStateMachine.PlayerState>
     }
     public override void UpdateState()
     {
-        if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+        if (!controller.isPlayerMove)
         {
             nextState = PlayerStateMachine.PlayerState.Idle;
         }

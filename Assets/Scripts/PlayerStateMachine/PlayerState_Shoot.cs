@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerState_Shoot : State<PlayerStateMachine.PlayerState>
@@ -17,7 +14,6 @@ public class PlayerState_Shoot : State<PlayerStateMachine.PlayerState>
     {
         Debug.Log("Enter Shoot State");
         nextState = PlayerStateMachine.PlayerState.Shoot;
-        controller.SetVelocity(new Vector3(0,0,0));
     }
     public override void UpdateState()
     {

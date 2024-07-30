@@ -1,9 +1,3 @@
-using System;
-using System.Runtime.InteropServices;
-using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.Scripting;
-using static UnityEditor.VersionControl.Asset;
 
 public class PlayerStateMachine : StateManager<PlayerStateMachine.PlayerState>
 {    
@@ -14,9 +8,9 @@ public class PlayerStateMachine : StateManager<PlayerStateMachine.PlayerState>
         Shoot
     }
 
-    private PlayerState_Idle idleState = new PlayerState_Idle(PlayerState.Idle);
-    private PlayerState_Move moveState = new PlayerState_Move(PlayerState.Move);
-    private PlayerState_Shoot shootState = new PlayerState_Shoot(PlayerState.Shoot);
+    private State<PlayerState> idleState = new PlayerState_Idle(PlayerState.Idle);
+    private State<PlayerState> moveState = new PlayerState_Move(PlayerState.Move);
+    private State<PlayerState> shootState = new PlayerState_Shoot(PlayerState.Shoot);
 
     PlayerController controller;
 

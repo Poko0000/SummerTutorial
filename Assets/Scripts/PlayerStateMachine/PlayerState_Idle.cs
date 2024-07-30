@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerState_Idle : State<PlayerStateMachine.PlayerState>
@@ -15,11 +13,12 @@ public class PlayerState_Idle : State<PlayerStateMachine.PlayerState>
     public override void EnterState()
     {
         Debug.Log("Enter Idle State");
+        controller.SetVelocity(new Vector3 (0, 0, 0));
         nextState = PlayerStateMachine.PlayerState.Idle;
     }
     public override void UpdateState()
     {
-        if (Input.GetAxis("Horizontal") != 0 && Input.GetAxis("Vertical") != 0)
+        if (controller.isPlayerMove)
         {
             nextState = PlayerStateMachine.PlayerState.Move;
         }
